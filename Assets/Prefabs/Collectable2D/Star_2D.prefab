@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2545959118049652276}
   - component: {fileID: 4691199211947952602}
   - component: {fileID: 980780755143918831}
-  - component: {fileID: 1336079229934297513}
+  - component: {fileID: 6322353810640606175}
   m_Layer: 0
   m_Name: Star_2D
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: 67645f496abfb492ea320688c25a2416, type: 3}
+  m_Sprite: {fileID: 647404008442470582, guid: adb549cffd9704d679334aba97693754, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,7 +181,7 @@ PolygonCollider2D:
       - {x: -0.0026666666, y: -0.066}
       - {x: 0.0039999997, y: -0.06333333}
   m_UseDelaunayMesh: 0
---- !u!114 &1336079229934297513
+--- !u!114 &6322353810640606175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,9 +190,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7300621163663427789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613c788f1945544f5baa134130a6b70d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba4941f176b940439ea4e1d3aa150ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
-  onCollectEffect: {fileID: 9163842254569548763, guid: a64312fe794124baa923bcca22ea4631,
-    type: 3}
+  rotationSpeed: 0.7
+  onCollectEffect: {fileID: 9163842254569548763, guid: 6d15eb92a997141259e4d43b70fa3ea9, type: 3}

@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System; // Required for Type handling
 
-public class UpdateCollectibleCount : MonoBehaviour
+public class UpdateCollectibleCount2D : MonoBehaviour
 {
     private float counter;
     private decimal timePassed;
@@ -12,7 +12,7 @@ public class UpdateCollectibleCount : MonoBehaviour
     private VFXLevelComplete2D floatUpVFXEffect;
 
     
-    void Start()
+    public void Start()
     {
         door2D = GameObject.Find("Door_Bottom").GetComponent<Door2D>();
         if (door2D == null)
@@ -27,6 +27,9 @@ public class UpdateCollectibleCount : MonoBehaviour
             return;
         }
         UpdateCollectibleDisplay(); // Initial update on start
+        // Debug.Log($"Collectible Count: {totalCollectibles}");
+        // Debug.Log($"Time Passed: {timePassed}");
+
     }
 
     void Update()
@@ -34,6 +37,7 @@ public class UpdateCollectibleCount : MonoBehaviour
         timePassed = Math.Round((decimal)(counter += Time.deltaTime), 2);
         UpdateCollectibleDisplay();
         AllCollectablesGathered();
+        // Debug.LogWarning($"Time Passed: {timePassed}");
     }
 
     private void UpdateCollectibleDisplay()
@@ -71,5 +75,10 @@ public class UpdateCollectibleCount : MonoBehaviour
             // floatUpVFXEffect.Start();
             collectibleText.text = $"Level complete!";
         }
+    }
+
+    public void Reset()
+    {
+        Start();
     }
 }

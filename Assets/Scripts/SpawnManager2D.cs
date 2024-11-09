@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject dirt2DPrefab;
-    public GameObject petPrefab;
+    public GameObject cheese2DPrefab;
+    public GameObject star2DPrefab;
     public GameObject catPrefab;
     public GameObject dogPrefab;
+    public GameObject petPrefab;
     private GameObject collectibleText;
 
 
@@ -75,11 +77,6 @@ public class SpawnManager : MonoBehaviour
             newCollectable.transform.parent = gameObject.transform;
         }
         SpawnPet();
-    }
-
-    void Update()
-    {
-        
     }
 
     void SpawnPet()

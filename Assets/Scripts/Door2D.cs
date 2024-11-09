@@ -8,7 +8,7 @@ public class Door2D : MonoBehaviour
 
     void Start()
     {
-        doorAnim = GameObject.Find("Door_Bottom").GetComponent<Animator>();
+        doorAnim = GetComponent<Animator>();
         if (doorAnim == null)
         { 
             Debug.LogError("doorAnim is NULL");
@@ -17,6 +17,7 @@ public class Door2D : MonoBehaviour
 
     public void OpenDoor()
     {
-        doorAnim.SetTrigger("OnLevelComplete");
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        // doorAnim.SetTrigger("OnLevelComplete");
     }
 }

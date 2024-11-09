@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Collectible2D : MonoBehaviour
 {
-    public float rotationSpeed = 0.5f;
+    public float rotationSpeed = 0.7f;
     public GameObject onCollectEffect;
 
 

@@ -2,42 +2,34 @@ using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
-    // Public variables
-    public float speed = 5f; // The speed at which the player moves
+    public float speed = 5f;
     public float speedBoost = 1.5f;
-    private bool isSpeedBoostActive = false;
-    public bool canMoveDiagonally = true; // Controls whether the player can move diagonally
-
-    // Private variables 
-    private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
-    private Vector2 movement; // Stores the direction of player movement
-    private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
+    public bool isSpeedBoostActive = false;
+    public bool canMoveDiagonally = true;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private bool isMovingHorizontally = true;
 
     void Start()
     {
-        // Initialize the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
-        // Prevent the player from rotating
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
     {
-        // Get player input from keyboard or controller
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Check if diagonal movement is allowed
         if (canMoveDiagonally)
         {
-            // Set movement direction based on input
             movement = new Vector2(horizontalInput, verticalInput);
-            // Optionally rotate the player based on movement direction
+
             RotatePlayer(horizontalInput, verticalInput);
         }
         else
         {
-            // Determine the priority of movement based on input
             if (horizontalInput != 0)
             {
                 isMovingHorizontally = true;
@@ -47,7 +39,6 @@ public class PlayerController2D : MonoBehaviour
                 isMovingHorizontally = false;
             }
 
-            // Set movement direction and optionally rotate the player
             if (isMovingHorizontally)
             {
                 movement = new Vector2(horizontalInput, 0);
@@ -84,12 +75,15 @@ public class PlayerController2D : MonoBehaviour
 
     void RotatePlayer(float x, float y)
     {
-        // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;
 
-        // Calculate the rotation angle based on input direction
         float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-        // Apply the rotation to the player
+
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = new Vector3(6.13999987f, 3.78999996f, 0);
     }
 }

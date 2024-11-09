@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8271606140396203049}
   - component: {fileID: 5358171481438051945}
   - component: {fileID: 8357744153491121780}
-  - component: {fileID: 7673318441936641095}
+  - component: {fileID: 8948648755003513447}
   m_Layer: 0
   m_Name: Cheese_2D
   m_TagString: Untagged
@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: 4a05a259aaec445b6848eaf8f321b81a, type: 3}
+  m_Sprite: {fileID: -8606182622564529699, guid: 7ede086a7d99742c0ab0b8395a1517b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.216, y: 0.292}
+  m_Size: {x: 0.14266667, y: 0.192}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -126,9 +126,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49230778, y: 0.3751927}
-    oldSize: {x: 0.216, y: 0.292}
-    newSize: {x: 0.216, y: 0.292}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.14266667, y: 0.192}
+    newSize: {x: 0.14266667, y: 0.192}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -153,7 +153,7 @@ PolygonCollider2D:
       - {x: 0.10966153, y: -0.08755627}
       - {x: 0.10566153, y: -0.07755627}
   m_UseDelaunayMesh: 0
---- !u!114 &7673318441936641095
+--- !u!114 &8948648755003513447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,9 +162,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2335750460910374663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613c788f1945544f5baa134130a6b70d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ba4941f176b940439ea4e1d3aa150ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
-  onCollectEffect: {fileID: 9163842254569548763, guid: 919783951ffab4c9ea8860c54de9543c,
-    type: 3}
+  rotationSpeed: 0.7
+  onCollectEffect: {fileID: 9163842254569548763, guid: 919783951ffab4c9ea8860c54de9543c, type: 3}
