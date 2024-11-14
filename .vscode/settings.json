@@ -56,5 +56,12 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Vacuum Guy.sln"
+    "dotnet.defaultSolution": "Vacuum Guy.sln",
+    "window.density.editorTabHeight": "compact",
+    "workbench.editor.decorations.colors": true,
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.tabSizingFixedMaxWidth": 160,
+    "workbench.editor.tabSizingFixedMinWidth": 50,
+    "workbench.editor.wrapTabs": false
 }

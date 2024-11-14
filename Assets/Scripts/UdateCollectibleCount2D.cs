@@ -7,7 +7,7 @@ public class UpdateCollectibleCount2D : MonoBehaviour
     private float counter;
     private decimal timePassed;
     private int totalCollectibles;
-    private TextMeshProUGUI collectibleText; // Reference to the TextMeshProUGUI component
+    private TextMeshProUGUI collectibleText;
     private Door2D door2D;
     private VFXLevelComplete2D floatUpVFXEffect;
 
@@ -26,10 +26,9 @@ public class UpdateCollectibleCount2D : MonoBehaviour
             Debug.LogError("UpdateCollectibleCount script requires a TextMeshProUGUI component on the same GameObject.");
             return;
         }
-        UpdateCollectibleDisplay(); // Initial update on start
+        UpdateCollectibleDisplay();
         // Debug.Log($"Collectible Count: {totalCollectibles}");
         // Debug.Log($"Time Passed: {timePassed}");
-
     }
 
     void Update()
@@ -43,24 +42,23 @@ public class UpdateCollectibleCount2D : MonoBehaviour
     private void UpdateCollectibleDisplay()
     {
         totalCollectibles = 0;
-        // Check and count objects of type Collectible
         Type collectibleType = Type.GetType("Collectible");
         if (collectibleType != null)
         {
             totalCollectibles += UnityEngine.Object.FindObjectsByType(collectibleType, FindObjectsSortMode.None).Length;
         }
 
-        // Optionally, check and count objects of type Collectible2D as well if needed
         Type collectible2DType = Type.GetType("Collectible2D");
         if (collectible2DType != null)
         {
             totalCollectibles += UnityEngine.Object.FindObjectsByType(collectible2DType, FindObjectsSortMode.None).Length;
         }
 
-        // Update the collectible count display
         collectibleText.text = $"Collectibles remaining: {totalCollectibles}";
     }
+
 //TODO: Set is true for level complete to remove it from Update()
+
     void AllCollectablesGathered()
     {
         // floatUpVFXEffect = GameObject.Find("VFX_Level_Complete").GetComponent<VFXLevelComplete2D>();

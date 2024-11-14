@@ -1,18 +1,26 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager2D : MonoBehaviour
 {
-    public GameObject dirt2DPrefab;
     public GameObject cheese2DPrefab;
+    public GameObject dirt2DPrefab;
     public GameObject star2DPrefab;
     public GameObject catPrefab;
     public GameObject dogPrefab;
     public GameObject petPrefab;
-    private GameObject collectibleText;
+    
 
+    Vector2[] level0Collectibles =
+    {
+        new Vector2(0, 0),
+    };
 
-    Vector2[] level1CollectablePositions =
+    Vector2[] level1Collectibles =
+    {
+        new Vector2(0, 0),
+    };
+
+    Vector2[] level2Collectibles =
     {
         // new Vector2(0.43f, 0.68f),
         // new Vector2(-0.3f, 2.4f),
@@ -71,17 +79,42 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        foreach (var collectable in level1CollectablePositions)
-        {
-            GameObject newCollectable = Instantiate(dirt2DPrefab, collectable, transform.rotation);
-            newCollectable.transform.parent = gameObject.transform;
-        }
+        LoadLevel(0);
         SpawnPet();
+    }
+
+    public void LoadLevel(int level)
+    {
+        Debug.Log($"The Level is: {level}");
+        switch (level)
+        {
+            case 0:
+                foreach (var collectable in level0Collectibles)
+                {
+                    GameObject newCollectable = Instantiate(star2DPrefab, collectable, transform.rotation);
+                    newCollectable.transform.parent = gameObject.transform;
+                }
+                break;
+            case 1:
+                foreach (var collectable in level1Collectibles)
+                {
+                    GameObject newCollectable = Instantiate(dirt2DPrefab, collectable, transform.rotation);
+                    newCollectable.transform.parent = gameObject.transform;
+                }
+                break;
+            case 2:
+                foreach (var collectable in level2Collectibles)
+                {
+                    GameObject newCollectable = Instantiate(cheese2DPrefab, collectable, transform.rotation);
+                    newCollectable.transform.parent = gameObject.transform;
+                }
+                break;
+        }
     }
 
     void SpawnPet()
     {
-        int scene = SceneManager.GetActiveScene().buildIndex;
+        int scene = 0; // SceneManager.GetActiveScene().buildIndex;
         if (scene == 0)
         {
             int petPick = Random.Range(0, 2);

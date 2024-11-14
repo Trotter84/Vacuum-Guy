@@ -7,13 +7,14 @@ public class PlayerController2D : MonoBehaviour
     public bool isSpeedBoostActive = false;
     public bool canMoveDiagonally = true;
     private Rigidbody2D rb;
+    private Gravity2D gravity;
     private Vector2 movement;
     private bool isMovingHorizontally = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        gravity = GetComponent<Gravity2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
@@ -58,6 +59,10 @@ public class PlayerController2D : MonoBehaviour
         {
             isSpeedBoostActive = false;
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            gravity.ActivateGravity();
+        }
     }
 
     void FixedUpdate()
@@ -84,6 +89,6 @@ public class PlayerController2D : MonoBehaviour
 
     public void ResetPlayer()
     {
-        transform.position = new Vector3(6.13999987f, 3.78999996f, 0);
+        transform.position = new Vector3(transform.position.x, 3.78999996f, 0);
     }
 }
