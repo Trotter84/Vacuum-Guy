@@ -8,11 +8,12 @@ public class SpawnManager2D : MonoBehaviour
     public GameObject catPrefab;
     public GameObject dogPrefab;
     public GameObject petPrefab;
-    
+    private int level;
+
 
     Vector2[] level0Collectibles =
     {
-        new Vector2(0, 0),
+        new Vector2(2.38f, -1.66f),
     };
 
     Vector2[] level1Collectibles =
@@ -77,15 +78,20 @@ public class SpawnManager2D : MonoBehaviour
     //     new Vector2(0, 0),
     // };
 
+    Vector2[] level0Pets =
+    {
+        new Vector2(-0.97f, -1.62f),
+    };
+
     void Start()
     {
-        LoadLevel(0);
-        SpawnPet();
+        PetPicker();
+        SpawnObjects(0);
     }
 
-    public void LoadLevel(int level)
+    public void SpawnObjects(int level)
     {
-        Debug.Log($"The Level is: {level}");
+        Debug.Log($"Spawning Collectibles for level {level}");
         switch (level)
         {
             case 0:
@@ -93,6 +99,11 @@ public class SpawnManager2D : MonoBehaviour
                 {
                     GameObject newCollectable = Instantiate(star2DPrefab, collectable, transform.rotation);
                     newCollectable.transform.parent = gameObject.transform;
+                }
+                foreach (var pet in level0Pets)
+                {
+                    GameObject newPet = Instantiate(petPrefab, pet, Quaternion.Euler(0, 0, 45));
+                    newPet.transform.parent = gameObject.transform;
                 }
                 break;
             case 1:
@@ -112,23 +123,32 @@ public class SpawnManager2D : MonoBehaviour
         }
     }
 
-    void SpawnPet()
+    void PetPicker()
     {
-        int scene = 0; // SceneManager.GetActiveScene().buildIndex;
-        if (scene == 0)
-        {
-            int petPick = Random.Range(0, 2);
+        int chanceForSpawn = Random.Range(0, 3);
 
-            switch (petPick)
-            {
-                case 0:
-                    petPrefab = catPrefab;
-                    break;
-                case 1:
-                    petPrefab = dogPrefab;
-                    break;
-            }
-            Instantiate(petPrefab, new Vector3(0, -1.5f, 0), transform.rotation);
+        if (level == 0)
+        {
+            PetPickerSwitch();
+        }
+        else if (chanceForSpawn == 1)
+        {
+            PetPickerSwitch();
+        }
+    }
+
+    void PetPickerSwitch()
+    {
+        int petPick = Random.Range(0, 2);
+
+        switch (petPick)
+        {
+            case 0:
+                petPrefab = catPrefab;
+                break;
+            case 1:
+                petPrefab = dogPrefab;
+                break;
         }
     }
 }

@@ -7,17 +7,19 @@ public class UpdateCollectibleCount2D : MonoBehaviour
     private float counter;
     private decimal timePassed;
     private int totalCollectibles;
+    private GameManager2D gameManager2D;
     private TextMeshProUGUI collectibleText;
+    
     private Door2D door2D;
     private VFXLevelComplete2D floatUpVFXEffect;
 
     
     public void Start()
     {
-        door2D = GameObject.Find("Door_Bottom").GetComponent<Door2D>();
-        if (door2D == null)
+        gameManager2D = GameObject.Find("Game_Manager2D").GetComponent<GameManager2D>();
+        if (gameManager2D == null)
         {
-            Debug.LogWarning("Door is NULL.");
+            Debug.LogError("GameManager2D is NULL.");
         }
 
         collectibleText = GetComponent<TextMeshProUGUI>();
@@ -26,6 +28,13 @@ public class UpdateCollectibleCount2D : MonoBehaviour
             Debug.LogError("UpdateCollectibleCount script requires a TextMeshProUGUI component on the same GameObject.");
             return;
         }
+
+        door2D = GameObject.Find("Door_Bottom").GetComponent<Door2D>();
+        if (door2D == null)
+        {
+            Debug.LogWarning("Door is NULL.");
+        }
+
         UpdateCollectibleDisplay();
         // Debug.Log($"Collectible Count: {totalCollectibles}");
         // Debug.Log($"Time Passed: {timePassed}");
@@ -57,8 +66,6 @@ public class UpdateCollectibleCount2D : MonoBehaviour
         collectibleText.text = $"Collectibles remaining: {totalCollectibles}";
     }
 
-//TODO: Set is true for level complete to remove it from Update()
-
     void AllCollectablesGathered()
     {
         // floatUpVFXEffect = GameObject.Find("VFX_Level_Complete").GetComponent<VFXLevelComplete2D>();
@@ -70,6 +77,7 @@ public class UpdateCollectibleCount2D : MonoBehaviour
         if (timePassed > 1 && totalCollectibles == 0)
         {
             door2D.OpenDoor();
+            gameManager2D.LevelComplete();
             // floatUpVFXEffect.Start();
             collectibleText.text = $"Level complete!";
         }

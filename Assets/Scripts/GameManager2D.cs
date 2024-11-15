@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager2D : MonoBehaviour
 {
+    public bool isLevelCompleted = false;
     public Camera mainCamera;
     private int level;
     public GameObject title;
@@ -12,6 +13,7 @@ public class GameManager2D : MonoBehaviour
     public GameObject level_2;
     public GameObject level_3;
     private SpawnManager2D spawnManager2D;
+    private MainMenu2D mainMenu2D;
 
 
     void Start()
@@ -27,10 +29,14 @@ public class GameManager2D : MonoBehaviour
 
     public void LevelComplete()
     {
-        FindRoom();
+        if (level == 0)
+        {
+            mainMenu2D = GameObject.Find("Main_Menu").GetComponent<MainMenu2D>();
+            mainMenu2D.LevelComplete(true);
+        }
     }
 
-    public void FindRoom()
+    public void FindNextRoom()
     {
         spawnManager2D = GameObject.Find("Spawn_Manager2D").GetComponent<SpawnManager2D>();
 
@@ -48,7 +54,7 @@ public class GameManager2D : MonoBehaviour
         {
             level = 2;
         }
-        spawnManager2D.LoadLevel(level);
+        spawnManager2D.SpawnObjects(level);
     }
 
         void NextRoom()
@@ -80,7 +86,7 @@ public class GameManager2D : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelComplete();
+            FindNextRoom();
             GameObject.Find("Player").GetComponent<PlayerController2D>().ResetPlayer();
             GameObject.Find("Text (TMP)").GetComponent<UpdateCollectibleCount2D>().Reset();
         }
