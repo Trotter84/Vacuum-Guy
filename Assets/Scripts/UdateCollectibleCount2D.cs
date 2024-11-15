@@ -9,7 +9,6 @@ public class UpdateCollectibleCount2D : MonoBehaviour
     private int totalCollectibles;
     private GameManager2D gameManager2D;
     private TextMeshProUGUI collectibleText;
-    
     private Door2D door2D;
     private VFXLevelComplete2D floatUpVFXEffect;
 

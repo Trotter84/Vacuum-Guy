@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba4941f176b940439ea4e1d3aa150ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.7
+  rotationSpeed: 0.5
   onCollectEffect: {fileID: 9163842254569548763, guid: 919783951ffab4c9ea8860c54de9543c, type: 3}

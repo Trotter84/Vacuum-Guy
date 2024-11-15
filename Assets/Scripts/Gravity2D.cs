@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 
+//TODO: Try to fix Gravity!!
+
 public class Gravity2D : MonoBehaviour {
     public bool isGravityPullActive = false;
     public float gravityStrength = 50f;

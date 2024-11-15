@@ -18,75 +18,70 @@ public class SpawnManager2D : MonoBehaviour
 
     Vector2[] level1Collectibles =
     {
-        new Vector2(0, 0),
+        new Vector2(-5.96000004f, 1.66999996f),
+        new Vector2(-2.06f, -1.81f),
+        new Vector2(-4f, -3.41f),
+        new Vector2(-1f, 2.7f),
+        new Vector2(0.53f, 3.24f),
+        new Vector2(2.07f, 3.48f),
+        new Vector2(2.21f, -3.77f),
+        new Vector2(3.87f, -3.52f),
+        new Vector2(5.96000004f, 0f),
+        new Vector2(-5.96000004f, -1.76999998f)
     };
 
     Vector2[] level2Collectibles =
     {
-        // new Vector2(0.43f, 0.68f),
-        // new Vector2(-0.3f, 2.4f),
-        // new Vector2(-6.81f, 3.22f),
-        // new Vector2(-2.63f, 2.06f),
-        // new Vector2(-0.3f, 2.4f),
-        // new Vector2(-5.76f, 1.5f),
-        // new Vector2(-4.77f, -0.1f),
-        // new Vector2(-2.25f, 0.68f),
-        // new Vector2(-6.32f, -1.82f),
-        // new Vector2(-5.12f, -3.51f),
-        // new Vector2(2.71f, -2.98f),
-        // new Vector2(0.3f, -3.26f),
-        // new Vector2(-0.45f, -3.26f),
-        // new Vector2(-1.2f, -3.26f),
-        // new Vector2(-1.95f, -3.26f),
-        // new Vector2(-2.7f, -3.26f),
-        // new Vector2(-3.45f, -3.26f),
-        // new Vector2(-3.949999f, -2.76f),
-        // new Vector2(-4.449999f, -2.26f),
-        // new Vector2(-4.949999f, -1.76f),
-        // new Vector2(-5.449999f, -1.26f),
-        // new Vector2(-5.949999f, -0.76f),
-        // new Vector2(5.89f, -1.63f),
-        // new Vector2(-0.57f, -0.66f),
-        // new Vector2(1.39f, 2.1f),
-        // new Vector2(6.79f, 2.12f),
-        // new Vector2(6.79f, 1.62f),
-        // new Vector2(6.79f, 1.12f),
-        // new Vector2(6.79f, 0.6199999f),
-        // new Vector2(6.79f, 0.1199999f),
-        // new Vector2(6.29f, 0.1199999f),
-        // new Vector2(5.79f, 0.1199999f),
-        // new Vector2(5.29f, 0.1199999f),
-        // new Vector2(4.79f, 0.1199999f),
-        // new Vector2(4.29f, 0.1199999f),
-        // new Vector2(3.79f, 0.1199999f),
-        // new Vector2(3.29f, 0.1199999f),
-        // new Vector2(2.62f, 3.2f),
-        // new Vector2(4.77f, 2.89f),
-        // new Vector2(3.27f, 1.76f),
-        // new Vector2(4.96f, 1.49f),
-        // new Vector2(-4.09f, 2.37f),
-        // new Vector2(-2.61f, -1.22f),
-        // new Vector2(3.82f, -3.24f),
-        // new Vector2(4.67f, -3.14f),
-        // new Vector2(3.85f, -1.65f),
-        // new Vector2(4.89f, -1.44f),
-        // new Vector2(2.69f, -1.54f),
+        new Vector2(4.09f, 3.87f),
+        new Vector2(3.79f, 1.21f),
+        new Vector2(-3.89f, -0.64f),
+        new Vector2(-3.08f, -0.73f),
+        new Vector2(-4.01f, -2.17f),
+        new Vector2(-6.69f, -3.6f),
+        new Vector2(1.23f, -2.03f),
+        new Vector2(0.09f, -1.57f),
+        new Vector2(-1.05f, -1.04f),
+        new Vector2(-3f, 1.88f),
+        new Vector2(-3.74f, 1.63f),
+        new Vector2(3.49f, -1.71f),
+        new Vector2(-6.88f, 3.54f),
+        new Vector2(-6.14f, 0.81f),
+        new Vector2(-1.21f, -3.82f),
     };
 
-    // Vector2[] pushableObjectsPositions = 
+    Vector2[] levelXCollectibles =
+    {
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+        new Vector2(0,0),
+    };
+
+    // Vector2[] level1PushableObjects = 
     // {
     //     new Vector2(0, 0),
     // };
 
-    Vector2[] level0Pets =
-    {
-        new Vector2(-0.97f, -1.62f),
-    };
-
-    void Start()
+    public void Spawn(int level)
     {
         PetPicker();
-        SpawnObjects(0);
+        SpawnObjects(level);
     }
 
     public void SpawnObjects(int level)
@@ -95,30 +90,58 @@ public class SpawnManager2D : MonoBehaviour
         switch (level)
         {
             case 0:
-                foreach (var collectable in level0Collectibles)
+                foreach (var collectible in level0Collectibles)
                 {
-                    GameObject newCollectable = Instantiate(star2DPrefab, collectable, transform.rotation);
-                    newCollectable.transform.parent = gameObject.transform;
+                    GameObject newCollectible = Instantiate(star2DPrefab, collectible, transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
                 }
-                foreach (var pet in level0Pets)
-                {
-                    GameObject newPet = Instantiate(petPrefab, pet, Quaternion.Euler(0, 0, 45));
-                    newPet.transform.parent = gameObject.transform;
-                }
+                GameObject newPet = Instantiate(petPrefab, new Vector2(-0.97f, -1.62f), Quaternion.Euler(0, 0, 45));
+                newPet.transform.parent = gameObject.transform;
                 break;
             case 1:
-                foreach (var collectable in level1Collectibles)
+                foreach (var collectible in level1Collectibles)
                 {
-                    GameObject newCollectable = Instantiate(dirt2DPrefab, collectable, transform.rotation);
-                    newCollectable.transform.parent = gameObject.transform;
+                    GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
                 }
+                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                newPet.transform.parent = gameObject.transform;
                 break;
             case 2:
-                foreach (var collectable in level2Collectibles)
+                foreach (var collectible in level2Collectibles)
                 {
-                    GameObject newCollectable = Instantiate(cheese2DPrefab, collectable, transform.rotation);
-                    newCollectable.transform.parent = gameObject.transform;
+                    GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
                 }
+                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                newPet.transform.parent = gameObject.transform;
+                break;
+            case 3:
+                foreach (var collectible in levelXCollectibles)
+                {
+                    GameObject newCollectible = Instantiate(cheese2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
+                }
+                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
+                newPet.transform.parent = gameObject.transform;
+                break;
+            case 4:
+                foreach (var collectible in levelXCollectibles)
+                {
+                    GameObject newCollectible = Instantiate(dirt2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
+                }
+                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
+                newPet.transform.parent = gameObject.transform;
+                break;
+            case 5:
+                foreach (var collectible in levelXCollectibles)
+                {
+                    GameObject newCollectible = Instantiate(dirt2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
+                    newCollectible.transform.parent = gameObject.transform;
+                }
+                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
+                newPet.transform.parent = gameObject.transform;
                 break;
         }
     }
