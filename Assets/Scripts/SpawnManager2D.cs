@@ -92,55 +92,71 @@ public class SpawnManager2D : MonoBehaviour
         switch (level)
         {
             case 0:
+
                 foreach (var collectible in level0Collectibles)
                 {
                     GameObject newCollectible = Instantiate(star2DPrefab, collectible, transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+
                 GameObject newPet = Instantiate(petPrefab, new Vector2(-0.97f, -1.62f), Quaternion.Euler(0, 0, 45));
                 newPet.transform.parent = gameObject.transform;
                 break;
+        
             case 1:
+
                 foreach (var collectible in level1Collectibles)
                 {
                     GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+
                 PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 newPet.transform.parent = gameObject.transform;
                 break;
+
             case 2:
+            
                 foreach (var collectible in level2Collectibles)
                 {
                     GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+
                 PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 newPet.transform.parent = gameObject.transform;
                 break;
+
             case 3:
+
                 foreach (var collectible in levelXCollectibles)
                 {
                     GameObject newCollectible = Instantiate(cheese2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+
                 PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
                 newPet.transform.parent = gameObject.transform;
                 break;
+
             case 4:
+
                 foreach (var collectible in levelXCollectibles)
                 {
                     GameObject newCollectible = Instantiate(dirt2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+
                 PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
                 newPet.transform.parent = gameObject.transform;
                 break;
+
             case 5:
+            
                 foreach (var collectible in levelXCollectibles)
                 {
                     GameObject newCollectible = Instantiate(star2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
