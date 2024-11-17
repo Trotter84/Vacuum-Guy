@@ -30,6 +30,15 @@ public class GameManager2D : MonoBehaviour
         FindRoom();
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.LogWarning("Quitting game...");
+            Application.Quit();
+        }
+    }
+
     public void LevelComplete()
     {
         if (level == 0)
