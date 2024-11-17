@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
-using Unity.Mathematics;
+
 
 
 public class MainMenu2D : MonoBehaviour

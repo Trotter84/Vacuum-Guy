@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class SpawnManager2D : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class SpawnManager2D : MonoBehaviour
     public GameObject catPrefab;
     public GameObject dogPrefab;
     public GameObject petPrefab;
-    private int level;
+   
 
 
     Vector2[] level0Collectibles =
@@ -80,7 +82,7 @@ public class SpawnManager2D : MonoBehaviour
 
     public void Spawn(int level)
     {
-        PetPicker();
+        PetPicker(level);
         SpawnObjects(level);
     }
 
@@ -104,6 +106,7 @@ public class SpawnManager2D : MonoBehaviour
                     GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+                PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 newPet.transform.parent = gameObject.transform;
                 break;
@@ -113,6 +116,7 @@ public class SpawnManager2D : MonoBehaviour
                     GameObject newCollectible = Instantiate(dirt2DPrefab, collectible, transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+                PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 newPet.transform.parent = gameObject.transform;
                 break;
@@ -122,6 +126,7 @@ public class SpawnManager2D : MonoBehaviour
                     GameObject newCollectible = Instantiate(cheese2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+                PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
                 newPet.transform.parent = gameObject.transform;
                 break;
@@ -131,22 +136,22 @@ public class SpawnManager2D : MonoBehaviour
                     GameObject newCollectible = Instantiate(dirt2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
+                PetPickerSwitch();
                 newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
                 newPet.transform.parent = gameObject.transform;
                 break;
             case 5:
                 foreach (var collectible in levelXCollectibles)
                 {
-                    GameObject newCollectible = Instantiate(dirt2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
+                    GameObject newCollectible = Instantiate(star2DPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4, 4)), transform.rotation);
                     newCollectible.transform.parent = gameObject.transform;
                 }
-                newPet = Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
-                newPet.transform.parent = gameObject.transform;
+                StartCoroutine(LastLevelSpawnRoutine());
                 break;
         }
     }
 
-    void PetPicker()
+    void PetPicker(int level)
     {
         int chanceForSpawn = Random.Range(0, 3);
 
@@ -172,6 +177,17 @@ public class SpawnManager2D : MonoBehaviour
             case 1:
                 petPrefab = dogPrefab;
                 break;
+        }
+    }
+
+    IEnumerator LastLevelSpawnRoutine()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Instantiate(petPrefab, new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-4f, 4f)), Quaternion.Euler(0, 0, 360));
+            transform.parent = gameObject.transform;
+            yield return new WaitForSeconds(2f);
+            PetPickerSwitch();
         }
     }
 }
