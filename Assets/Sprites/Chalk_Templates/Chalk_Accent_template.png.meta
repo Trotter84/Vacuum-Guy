@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Chalk_Accent_template_0: -1632139897961657658
+      Chalk_Accent_template_1: 5961802257052373123
+      Chalk_Accent_template_2: 128704615484133706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

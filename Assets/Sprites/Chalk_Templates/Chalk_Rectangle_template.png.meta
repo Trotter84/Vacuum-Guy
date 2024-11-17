@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Chalk_Rectangle_template_0: 974559894536312439
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,6 +8,7 @@ public class MainMenu2D : MonoBehaviour
     public float textDelay = 4f;
     public float arrowDelay = 0.5f;
     public bool levelComplete = false;
+    public GameObject credits;
     public GameObject controls;
     public GameObject collectibeAccent;
     public GameObject startHereText;
@@ -43,6 +44,7 @@ public class MainMenu2D : MonoBehaviour
             Debug.LogError("Arrow is NULL");
         }
 
+        credits.SetActive(true);
         controls.SetActive(true);
         collectibeAccent.SetActive(true);
     }
